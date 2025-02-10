@@ -2,8 +2,10 @@
 
 This is part of MS Data Science Course at University of Colorado Boulder.
 
-This is part of the Unsupervised learning final project (as part of the Machine Learning UnSupervised Learning course). The notebook consists of EDA, Modeling results.
+This is part of the Unsupervised learning final project (as part of the Machine Learning UnSupervised Learning course). 
 
-As part of this project, I have created a simple similarity based Recommendation System and deployed it using Streamlit
+The notebook consits of EDA, Recommender system, results and Conclusion
 
-The app has been deployed through streamlit at https://unsupervisedlearning-movie-recommendation-system.streamlit.app/
+The Project is Movie Recommender System and the dataset is sourced from Kaggle https://www.kaggle.com/datasets/abdallahwagih/movies
+
+The code has been deployed in streamlit : https://unsupervisedlearning-movie-recommendation-system.streamlit.app/
