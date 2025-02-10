@@ -6,4 +6,4 @@ This is part of the Unsupervised learning final project (as part of the Machine 
 
 As part of this project, I have created a simple similarity based Recommendation System and deployed it using Streamlit
 
-The app has been deployed through streamlit at https://usermovierecommendations.streamlit.app/ 
+The app has been deployed through streamlit at https://unsupervisedlearning-movie-recommendation-system.streamlit.app/
