@@ -5,8 +5,11 @@ Created on Sun Feb  9 22:16:59 2025
 @author: priya
 """
 
+import numpy as np
+import pickle
 import streamlit as st
-    
+import difflib
+import pandas as pd    
     
 def movie_recommender_system(movie_name):
     st.title("Movie Based Recommendation System")
