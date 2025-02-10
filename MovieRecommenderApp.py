@@ -5,9 +5,9 @@ Created on Sun Feb  9 22:16:59 2025
 @author: priya
 """
 
+import streamlit as st
 import numpy as np
 import pickle
-import streamlit as st
 import difflib
 import pandas as pd    
     
@@ -23,10 +23,13 @@ def movie_recommender_system(movie_name):
     if not find_close_match:
         return ["No close match found. Please try another movie."]
 
+    
     close_match = find_close_match[0]
-    index_of_the_movie = index_of_the_movie = movies_data[movies_data.title == close_match]['mID'].values[0]
+    index_of_the_movie = movies_data[movies_data.title == close_match]['index'].values[0]
     similarity_score = list(enumerate(similarity[index_of_the_movie]))
-    sorted_similar_movies = sorted(similarity_score, key=lambda x: x[1], reverse=True)
+    sorted_similar_movies = sorted(similarity_score, key = lambda x:x[1], reverse = True)
+    print('Movies suggested for you : \n')
+
 
     recommendations = []
     for i, movie in enumerate(sorted_similar_movies[1:11], start=1):  # Skip first because it's the input movie itself
