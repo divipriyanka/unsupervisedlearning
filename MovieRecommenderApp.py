@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Feb  9 16:57:22 2025
+Created on Sun Feb  9 22:16:59 2025
 
 @author: priya
 """
 
-import numpy as np
-import pickle
 import streamlit as st
-import difflib
-import pandas as pd
-
-# Load your precomputed movie data and similarity matrix
-movies_data = pickle.load(open('movies_data.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
-
+    
+    
 def movie_recommender_system(movie_name):
+    st.title("Movie Based Recommendation System")
+
+    # Load data
+    movies_data = pd.read_csv("movies.csv")
+    
     list_of_all_titles = movies_data['title'].tolist()
     find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)
 
