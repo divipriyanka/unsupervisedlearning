@@ -10,13 +10,30 @@ import numpy as np
 import pickle
 import difflib
 import pandas as pd    
-    
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity    
+
 def movie_recommender_system(movie_name):
     st.title("Movie Based Recommendation System")
 
     # Load data
     movies_data = pd.read_csv("movies.csv")
     
+    #selecting the relevant features for recommendation
+    selected_features = ['genres','keywords','tagline','cast','director']
+    print(selected_features)
+    
+    #replacing the null values with null string
+
+    for feature in selected_features :
+        movies_data[feature] = movies_data[feature].fillna('')    
+        
+    # Combining all the 5 selected features
+    combined_features = movies_data['genres']+' '+movies_data['keywords']+' '+movies_data['tagline']+' '+movies_data['cast']+' '+movies_data['director']
+    
+    vectorizer = TfidfVectorizer()
+    feature_vectors = vectorizer.fit_transform(combined_features)
+    similarity = cosine_similarity(feature_vectors)
     list_of_all_titles = movies_data['title'].tolist()
     find_close_match = difflib.get_close_matches(movie_name, list_of_all_titles)
 
@@ -32,7 +49,7 @@ def movie_recommender_system(movie_name):
 
 
     recommendations = []
-    for i, movie in enumerate(sorted_similar_movies[1:11], start=1):  # Skip first because it's the input movie itself
+    for i, movie in enumerate(sorted_similar_movies[1:31], start=1):  
         index = movie[0]
         recommended_movie = movies_data[movies_data.index == index]['title'].values[0]
         recommendations.append(f"{i}. {recommended_movie}")
